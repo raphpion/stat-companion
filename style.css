@@ -13,9 +13,9 @@ h1 {
   flex-direction: row;
 }
 .col {
-  width: 100%;
+  width: 50%;
   flex-direction: column;
-  margin: 20px;
+  padding: 20px;
 }
 textarea {
   font-size: 20px;
@@ -41,4 +41,10 @@ textarea {
 }
 .buttons button:hover {
   background: #007fbf;
+}
+.buttons button.red {
+  background: #d11f00;
+}
+.buttons button.red:hover {
+  background: #a61900;
 }
