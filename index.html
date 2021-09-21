@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>StatCompanion</title>
+  </head>
+  <body>
+    <h1>StatCompanion</h1>
+    <div class="row">
+      <div class="col">
+        <h2>Entrez votre échantillon ici</h2>
+        <textarea name="input" id="input" placeholder="1,2,3..."></textarea>
+      </div>
+      <div class="col">
+        <h2>Réponse</h2>
+        <textarea name="output" id="output" disabled="true" placeholder="La réponse apparaîtra ici..."></textarea>
+      </div>
+    </div>
+    <div class="buttons">
+      <button id="tendance-centrale">Mesures de tendance centrale</button>
+      <button id="dispertion">Mesures de dispertion</button>
+      <button id="reinitialiser" class="red">Réinitialiser</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
