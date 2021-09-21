@@ -1,3 +1,3 @@
 # StatCompanion
 
-Tools for stats and probability calculations amongst a defined sample.
+Outils pour l'étude statistique ou probabiliste d'un échantillon.

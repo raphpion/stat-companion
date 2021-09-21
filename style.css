@@ -1,0 +1,44 @@
+/* Main */
+* {
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col {
+  width: 100%;
+  flex-direction: column;
+  margin: 20px;
+}
+textarea {
+  font-size: 20px;
+  width: 100%;
+  min-height: 250px;
+  padding: 10px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttons button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: #00aaff;
+  transition: background 0.4s ease;
+  color: white;
+  border-radius: 2px;
+  font-size: 20px;
+}
+.buttons button:hover {
+  background: #007fbf;
+}
