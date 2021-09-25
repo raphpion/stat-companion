@@ -2,34 +2,32 @@
   app.js
   Cette application web permet de calculer plusieurs mesures d'analyse statistique et probabiliste
   à partir d'un échantillon.
+
+  par Raphaël Pion
  */
 
 let valeurs = []
 let estEchantillon = false
+let mesuresTendanceCentrale = ''
+let mesuresDispertion = ''
+
+let moyenne, mediane, mode, etendue, variance, ecartType, coefficientVariation
 
 const input = document.getElementById('input')
 const output = document.getElementById('output')
+const type = document.getElementsByName('type')
 
-const tendanceCentraleButton = document.getElementById('tendance-centrale')
-const dispertionButton = document.getElementById('dispertion')
+const analyseButton = document.getElementById('analyse')
 const reinitialiserButton = document.getElementById('reinitialiser')
 
-tendanceCentraleButton.addEventListener('click', calculTendanceCentrale)
+analyseButton.addEventListener('click', analyserDonnees)
 reinitialiserButton.addEventListener('click', reinitialiser)
 
-// Fonctions des boutons
-function calculTendanceCentrale() {
-  recupererEchantillon()
-  let moyenne = calculMoyenne()
-  let mediane = calculMediane()
-  let mode = calculMode()
-  if (moyenne === NaN || mediane === NaN || mode === NaN) output.value = 'Échantillon invalide!'
-  output.value = `x̄: ${limiterDecimales(moyenne, 4)}\nmd: ${mediane}\nmo: ${mode}`
-}
-
-function calculDispertion() {
-  recupererEchantillon()
-  // TODO: calcul des mesures de dispertion
+//* Fonctions des boutons =============================================================================================================================
+function analyserDonnees() {
+  calculTendanceCentrale()
+  calculDispertion()
+  updateOutput()
 }
 
 function reinitialiser() {
@@ -37,7 +35,28 @@ function reinitialiser() {
   output.value = ''
 }
 
-// Calculs individuels
+//* Calculs des mesures ===============================================================================================================================
+function calculTendanceCentrale() {
+  recupererEchantillon()
+  moyenne = calculMoyenne()
+  mediane = calculMediane()
+  mode = calculMode()
+  mesuresTendanceCentrale = `${estEchantillon ? 'x̄' : 'μ'}: ${limiterDecimales(moyenne, 4)}\nmd: ${mediane}\nmo: ${mode}`
+}
+
+function calculDispertion() {
+  recupererEchantillon()
+  etendue = calculEtendue()
+  variance = calculVariance()
+  ecartType = calculEcartType()
+  coefficientVariation = calculCoefficientVariation()
+  mesuresDispertion = `E: ${etendue}\n${estEchantillon ? 's' : 'σ'}²: ${limiterDecimales(variance, 4)}\n${estEchantillon ? 's' : 'σ'}: ${limiterDecimales(ecartType, 4)}\nCV: ${limiterDecimales(
+    coefficientVariation,
+    4
+  )}`
+}
+
+//* Calculs individuels ===============================================================================================================================
 function calculMoyenne() {
   let reponse = 0
   for (let i = 0; i < valeurs.length; i++) {
@@ -94,7 +113,29 @@ function calculMode() {
   return reponse
 }
 
-// fonctions de calculs intermédiaires
+function calculEtendue() {
+  return valeurs[valeurs.length - 1] - valeurs[0]
+}
+
+function calculVariance() {
+  let resultat = 0
+  let moyenne = limiterDecimales(calculMoyenne(), 4)
+  for (let v of valeurs) {
+    resultat += Math.pow(v - moyenne, 2)
+  }
+  resultat /= estEchantillon ? valeurs.length - 1 : valeurs.length
+  return resultat
+}
+
+function calculEcartType() {
+  return Math.sqrt(variance)
+}
+
+function calculCoefficientVariation() {
+  return ecartType / moyenne
+}
+
+//* Calculs intermédiaires =============================================================================================================================
 function limiterDecimales(valeur, num) {
   if (compterDecimales(valeur) > num) return valeur.toFixed(num)
   else return valeur
@@ -114,4 +155,12 @@ function recupererEchantillon() {
   valeurs.sort(function (a, b) {
     return a - b
   })
+  if (type[0].checked) estEchantillon = true
+  if (type[1].checked) estEchantillon = false
+}
+
+function updateOutput() {
+  if (isNaN(moyenne) || isNaN(etendue) || isNaN(variance) || isNaN(ecartType) || isNaN(coefficientVariation))
+    output.value = `Échantillon invalide !\nAssurez-vous d'avoir entré uniquement des nombres séparés d'une virgule sans espace.`
+  else output.value = mesuresTendanceCentrale + '\n' + mesuresDispertion
 }

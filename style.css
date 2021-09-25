@@ -1,33 +1,71 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
 /* Main */
 * {
-  font-family: monospace;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
 
+h1,
+h2 {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
 h1 {
   text-align: center;
+  margin: 20px 0 10px;
 }
-.row {
-  display: flex;
-  flex-direction: row;
+
+h2 {
+  font-size: 1.6em;
 }
-.col {
-  width: 50%;
-  flex-direction: column;
-  padding: 20px;
+
+.author {
+  font-size: 1.2em;
+  text-align: center;
+  margin: -12px 0 20px;
 }
+
+a {
+  text-decoration: none;
+  color: #00aaff;
+  transition: color 0.4s ease;
+}
+
+a:hover {
+  color: #007fbf;
+}
+
 textarea {
   font-size: 20px;
   width: 100%;
   min-height: 250px;
   padding: 10px;
+  margin: 10px 0;
+  font-family: monospace;
 }
+
+label {
+  font-size: 1.25em;
+  margin: 0 15px 0 5px;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
 .buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
 .buttons button {
   margin: 0 10px;
   padding: 10px;
@@ -39,12 +77,20 @@ textarea {
   border-radius: 2px;
   font-size: 20px;
 }
+
 .buttons button:hover {
   background: #007fbf;
 }
+
+.buttons button:disabled {
+  background: #a7c1cf;
+  cursor: not-allowed;
+}
+
 .buttons button.red {
   background: #d11f00;
 }
+
 .buttons button.red:hover {
   background: #a61900;
 }
