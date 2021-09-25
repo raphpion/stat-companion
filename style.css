@@ -1,5 +1,5 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
 /* Main */
 * {
@@ -8,13 +8,34 @@
   padding: 0;
 }
 
+h1,
+h2 {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
 h1 {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 0 10px;
 }
 
 h2 {
   font-size: 1.6em;
+}
+
+.author {
+  font-size: 1.2em;
+  text-align: center;
+  margin: -12px 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #00aaff;
+  transition: color 0.4s ease;
+}
+
+a:hover {
+  color: #007fbf;
 }
 
 textarea {
