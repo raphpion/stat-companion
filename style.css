@@ -42,6 +42,10 @@ textarea {
 .buttons button:hover {
   background: #007fbf;
 }
+.buttons button:disabled {
+  background: #a7c1cf;
+  cursor: not-allowed;
+}
 .buttons button.red {
   background: #d11f00;
 }
