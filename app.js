@@ -23,8 +23,11 @@ function calculTendanceCentrale() {
   let moyenne = calculMoyenne()
   let mediane = calculMediane()
   let mode = calculMode()
-  if (moyenne === NaN || mediane === NaN || mode === NaN) output.value = 'Échantillon invalide!'
-  output.value = `x̄: ${limiterDecimales(moyenne, 4)}\nmd: ${mediane}\nmo: ${mode}`
+  if (isNaN(moyenne)) output.value = 'Échantillon invalide!'
+  else {
+    output.value = `x̄: ${limiterDecimales(moyenne, 4)}\nmd: ${mediane}\nmo: ${mode}`
+    dispertionButton.disabled = false
+  }
 }
 
 function calculDispertion() {
@@ -35,6 +38,7 @@ function calculDispertion() {
 function reinitialiser() {
   input.value = ''
   output.value = ''
+  dispertionButton.disabled = true
 }
 
 // Calculs individuels
