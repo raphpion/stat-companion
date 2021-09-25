@@ -11,21 +11,20 @@
   <body>
     <h1>StatCompanion</h1>
     <div class="row">
-      <div class="col">
-        <h2>Entrez vos valeurs ici</h2>
+      <h2>Entrez vos valeurs ici</h2>
+      <span class="type-radio">
         <textarea name="input" id="input" placeholder="1,2,3..."></textarea>
         <input type="radio" name="type" id="echantillon" checked /><label for="echantillon">Échantillon</label> <input type="radio" name="type" id="population" /><label for="population"
           >Population</label
-        >
-      </div>
-      <div class="col">
-        <h2>Réponse</h2>
-        <textarea name="output" id="output" disabled="true" placeholder="La réponse apparaîtra ici..."></textarea>
-      </div>
+        ></span
+      >
+    </div>
+    <div class="row">
+      <h2>Réponse</h2>
+      <textarea name="output" id="output" disabled="true" placeholder="La réponse apparaîtra ici..."></textarea>
     </div>
     <div class="buttons">
-      <button id="tendance-centrale">Mesures de tendance centrale</button>
-      <button id="dispertion" disabled="true">Mesures de dispertion</button>
+      <button id="analyse">Analyser</button>
       <button id="reinitialiser" class="red">Réinitialiser</button>
     </div>
     <script src="app.js"></script>
